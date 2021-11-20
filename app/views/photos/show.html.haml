@@ -1,0 +1,13 @@
+.card.my-4
+  .card-image
+    = image_tag @photo, class: "materialboxed"
+    %span.card-title= @photo.blob.filename
+  .card-action
+    = link_to rails_blob_path(@photo, disposition: 'attachment'), class: "btn waves-effect waves-light" do
+      %i.material-icons.left download
+      Download
+      %small= number_to_human_size @photo.byte_size
+
+    = button_to photo_path(params[:id]), method: :delete, class: "btn-flat waves-effect waves-light" do
+      %i.material-icons.left delete
+      Delete

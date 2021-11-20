@@ -1,0 +1,3 @@
+= turbo_frame_tag :my_photos, target: "_top" do
+  %ul#photos.row
+    = render collection: @photos, partial: "photo"

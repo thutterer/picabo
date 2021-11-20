@@ -1,0 +1,5 @@
+.col.m6.l4.xl3
+  .card.hoverable.z-depth-1
+    .card-image
+      = link_to photo_url(photo) do
+        = image_tag photo.representation(resize_to_fill: [300, 300])

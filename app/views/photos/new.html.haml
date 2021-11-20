@@ -1,0 +1,33 @@
+= turbo_frame_tag :photo_upload do
+  .row
+    .col.s12
+      .card.my-4
+        .card-content(x-data="{uploads: [], ready: false, finished: false}")
+          = form_with url: photos_url, method: :post, data: { turbo_frame: "_top" }, html: {"x-on:direct-uploads:end" => "finished = true"} do |form|
+            .file-field.input-field
+              .btn(x-bind:disabled="uploads.length > 0")
+                %span Select photos
+                = form.file_field :photo, multiple: true, direct_upload: true, accept: "image/png,image/gif,image/jpeg",
+                  "x-on:direct-upload:initialize" => "uploads.push($event.detail)",
+                  "x-on:direct-upload:progress" => "uploads.find(u => u.id == $event.detail.id).progress = $event.detail.progress",
+                  "x-on:direct-upload:end" => "uploads.find(u => u.id == $event.detail.id).progress = 100",
+                  "x-on:change" => "ready = true"
+
+              .file-path-wrapper
+                %input.file-path.validate(type="text" placeholder="You can also drap and drop photos here.")
+
+            .center-align
+              %button.btn-large(type="submit" x-bind:disabled="uploads.length > 0 || !ready")
+                %i.material-icons.left add_to_photos
+                Upload
+
+          %template(x-for="upload in uploads")
+            .file-progress
+              .progress
+                .determinate(x-bind:style="`width: ${upload.progress || 0}%`")
+              %span(x-text="upload.file.name")
+
+          .all-done(x-show="finished" style="margin-top: 2rem;")
+            %b Done!
+            Do you want to upload more photos?
+            = link_to "OK", new_photo_url, class: "btn"

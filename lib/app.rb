@@ -8,7 +8,7 @@ module App
       description: "Share photos with friends and family.",
 
       theme_color: "#ab47bc",
-      background_color: "#fff"
+      background_color: "#f9fbfc"
     }
   end
 end

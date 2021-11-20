@@ -1,0 +1,2 @@
+= turbo_stream.update "photos" do
+  = render collection: current_user.photos.order(created_at: :desc), partial: "photo"

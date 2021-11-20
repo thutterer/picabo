@@ -2,6 +2,6 @@ module UserExtras
   extend ActiveSupport::Concern
 
   included do
-    # Extend your User model here.
+    has_many_attached :photos
   end
 end

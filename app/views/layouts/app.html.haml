@@ -3,7 +3,7 @@
 %header
   %nav
     .nav-wrapper
-      = link_to home_url, class: "brand-logo center" do
+      = link_to home_url, class: "brand-logo center", data: { turbo: "false" } do
         %span.material-icons camera_alt
       %ul#nav-mobile.right
         - if current_user
