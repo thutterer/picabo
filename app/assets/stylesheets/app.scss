@@ -1,3 +1,31 @@
-//= require mvp
+@import "materialize/components/color-variables";
 
-// Remove the "require mvp" line above if you want to use a framework like Bootstrap or Materialize.
+$primary-color: color("purple", "lighten-1") !default;
+
+@import "materialize";
+
+body {
+  background-color: var(--color-bg);
+
+  main {
+    height: calc(100vh - 64px);
+  }
+}
+
+// Make the "Sign out" button_to look like a regular nav link
+ul#nav-mobile form input[type="submit"] {
+  background: transparent;
+  border: none;
+  color: $navbar-font-color;
+  padding: 0 15px;
+  cursor: pointer;
+  line-height: $navbar-line-height-mobile;
+
+  @media #{$medium-and-up} {
+    line-height: $navbar-line-height;
+  }
+
+  &:hover {
+	  background-color: rgba(0, 0, 0, 0.1);
+  }
+}

@@ -1,0 +1,22 @@
+%link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+
+%header
+  %nav
+    .nav-wrapper
+      = link_to home_url, class: "brand-logo center" do
+        %span.material-icons camera_alt
+      %ul#nav-mobile.right
+        - if current_user
+          - if current_user.admin?
+            %li= link_to "Admin", "/admin"
+          %li= button_to "Sign out", destroy_user_session_url, method: 'delete'
+        - else
+          %li= link_to 'Sign in', new_user_session_url
+
+%main.container
+  = yield
+
+%footer
+
+= javascript_include_tag "app"
+= render "app/flash"
