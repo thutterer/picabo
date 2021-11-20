@@ -2,7 +2,8 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :destroy]
 
   def index
-    @photos = current_user.photos.order(created_at: :desc)
+    user = User.find(params[:user]) || current_user
+    @photos = user.photos.order(created_at: :desc)
   end
 
   def show
@@ -24,6 +25,6 @@ class PhotosController < ApplicationController
   private
 
   def set_photo
-    @photo = current_user.photos.find(params[:id])
+    @photo = ActiveStorage::Attachment.find(params[:id])
   end
 end

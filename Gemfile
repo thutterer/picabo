@@ -6,5 +6,6 @@ gem "app", path: "."
 
 # Add your gems here
 
+gem "initials"
 gem "haml"
 gem "materialize-sass", "~> 1.0.0"

@@ -3,15 +3,18 @@
 %header
   %nav
     .nav-wrapper
-      = link_to home_url, class: "brand-logo center", data: { turbo: "false" } do
+      = link_to home_url, class: "brand-logo" do
         %span.material-icons camera_alt
-      %ul#nav-mobile.right
-        - if current_user
-          - if current_user.admin?
-            %li= link_to "Admin", "/admin"
-          %li= button_to "Sign out", destroy_user_session_url, method: 'delete'
-        - else
-          %li= link_to 'Sign in', new_user_session_url
+        Picabo
+      %ul#nav-mobile.right.hide-on-small-only
+        = render "app/nav-links"
+
+%ul#slide-out.sidenav
+  = render "app/nav-links"
+
+.fixed-action-btn.hide-on-med-and-up
+  %a.btn-floating.btn-large.red.sidenav-trigger(data-target="slide-out" href="#")
+    %i.large.material-icons menu
 
 %main.container
   = yield

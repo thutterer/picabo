@@ -1,25 +1,27 @@
 - content_for :title do
   Sign in
 
-.card
-  = form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f|
-    .card-content
-      .input-field
-        = f.email_field :email, autocomplete: "email", required: true
-        = f.label :email
+.row
+  .col.offset-m2.m8.offset-l3.l6.offset-xl4.xl4
+    .card.my-4
+      = form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f|
+        .card-content
+          .input-field
+            = f.email_field :email, autocomplete: "email", required: true
+            = f.label :email
 
-      .input-field
-        = f.label :password
-        = f.password_field :password, autocomplete: "current-password", required: true
+          .input-field
+            = f.label :password
+            = f.password_field :password, autocomplete: "current-password", required: true
 
-      - if devise_mapping.rememberable?
-        %label
-          = f.check_box :remember_me
-          %span Remember me
+          - if devise_mapping.rememberable?
+            %label
+              = f.check_box :remember_me
+              %span Remember me
 
-    .card-action
-      %button.btn(type="submit") Sign in
+        .card-action
+          %button.btn(type="submit") Sign in
 
-%p.grey-text.centered
-  %b Note:
-  Sign up is currently disabled. You should have received the demo credentials.
+    %p.grey-text.centered
+      %b Note:
+      Sign up is currently disabled. You should have received the demo credentials.

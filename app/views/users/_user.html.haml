@@ -1,0 +1,5 @@
+= link_to user, class: "collection-item" do
+  = Initials.svg(user.first_name.presence || user.email, colors: 12, shape: :rect, size: 100)
+  %span.badge
+    = user.photos.count
+    photos

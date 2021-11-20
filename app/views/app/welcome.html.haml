@@ -1,2 +1,2 @@
 = turbo_frame_tag :photo_upload, src: new_photo_url
-= turbo_frame_tag :my_photos, src: photos_url, target: "_top"
+= turbo_frame_tag :my_photos, src: photos_url(user: current_user.id), target: "_top"

@@ -1,16 +1,14 @@
 @import "materialize/components/color-variables";
 
 $primary-color: color("purple", "lighten-1") !default;
+$secondary-color: color("purple", "darken-1") !default;
 
 @import "materialize";
 
 body {
   background-color: var(--color-bg);
-
-  main {
-    height: calc(100vh - 64px);
-  }
 }
+
 
 // Make the "Sign out" button_to look like a regular nav link
 ul#nav-mobile form input[type="submit"] {
@@ -30,11 +28,29 @@ ul#nav-mobile form input[type="submit"] {
   }
 }
 
+ul.sidenav form input[type="submit"] {
+  background: $sidenav-bg-color;
+  border: none;
+  color: $sidenav-font-color;
+  font-weight: 500;
+  padding: 0 ($sidenav-padding * 2);
+  cursor: pointer;
+  line-height: $sidenav-line-height;
+}
+ul.sidenav li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  & form input[type="submit"] { background-color: transparent; }
+}
+
+
 img.materialboxed {
   cursor: pointer;
   max-width: 100%;
 }
 
+nav .brand-logo {
+  padding: 0 15px;
+}
 
 form.button_to {
   display: inline-block;

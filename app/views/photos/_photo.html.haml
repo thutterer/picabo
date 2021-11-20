@@ -2,4 +2,4 @@
   .card.hoverable.z-depth-1
     .card-image
       = link_to photo_url(photo) do
-        = image_tag photo.representation(resize_to_fill: [300, 300])
+        = image_tag photo.representation(resize_to_fill: [500, 500]), loading: :lazy

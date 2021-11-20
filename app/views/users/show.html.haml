@@ -1,0 +1,5 @@
+%h3
+  Photos by
+  = @user.first_name || "#{@user.email[0]}."
+
+= turbo_frame_tag :my_photos, src: photos_url(user: @user), target: "_top"

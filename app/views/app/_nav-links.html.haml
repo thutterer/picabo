@@ -1,0 +1,7 @@
+- if current_user
+  %li= link_to "Browse all", users_url
+  - if current_user.admin?
+    %li= link_to "Admin", "/admin"
+  %li= button_to "Sign out", destroy_user_session_url, method: 'delete'
+- else
+  %li= link_to 'Sign in', new_user_session_url
